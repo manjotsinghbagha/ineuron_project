@@ -22,10 +22,8 @@ urlpatterns = [
     # MyCodes
     path('mycodes', views.MyCodeListCreate.as_view()),
     path('mycodes/<int:pk>', views.MyCodeRetrieveUpdateDestroy.as_view()),
-    # path('signup2', views.signup2.as_view()),
-    path("signup", views.SignupViewSet.as_view(), name="signup"),
-    # Auth
-    # path('signup', views.signup),
+
+
     path('', include(router.urls)),
     path('api-auth/', include('rest_framework.urls', namespace='rest_framework'))
 

@@ -1,16 +1,8 @@
 from rest_framework import generics, permissions
-from .serializers import MyCodeSerializer, SignupSerializer
+from .serializers import MyCodeSerializer
 from mycode.models import MyCode
 from django.contrib.auth import get_user_model
 
-from rest_framework import mixins, viewsets
-from rest_framework.permissions import AllowAny, IsAuthenticated
-
-
-class SignupViewSet(mixins.CreateModelMixin,
-                    viewsets.GenericViewSet):
-    permission_classes = [AllowAny]
-    serializer_class = SignupSerializer
 
 
 class MyCodeListCreate(generics.ListCreateAPIView):
