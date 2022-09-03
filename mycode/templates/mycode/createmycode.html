@@ -1,0 +1,34 @@
+{% extends "mycode/base.html" %}
+
+{% block content %}
+    <div class="row justify-content-center mt-5">
+        <div class="col-md-5">
+            <h2>New MyCode</h2>
+        </div>
+    </div>
+    <div class="row justify-content-center mt-5">
+        <div class="col-md-5">
+            {% if error %}
+                <div class="alert alert-danger" role="alert">
+                    {{ error }}
+                </div>
+            {% endif %}
+            <form method="POST">
+                {% csrf_token %}
+                <div class="form-group">
+                    <label for="code_name">code name</label>
+                    <input type="text" name="code_name" class="form-control" id="code_name" required>
+                </div>
+                <div class="form-group">
+                    <label for="cdoe">Code</label>
+                    <textarea name="code" class="form-control" id="code" ></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="language">language</label>
+                    <textarea name="language" class="form-control" id="language" ></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary">Save</button>
+            </form>
+        </div>
+    </div>
+{% endblock %}

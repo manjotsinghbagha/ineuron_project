@@ -1,0 +1,30 @@
+{% extends "mycode/base.html" %}
+
+{% block content %}
+    <div class="row justify-content-center mt-5">
+        <div class="col-md-10">
+            {% if mycodes %}
+                 <h1>{{ mycodes.count }} Current MyCode{{ mycodes.count|pluralize }}</h1>
+            {% else %}
+                           <h1>Current MyCodes</h1>
+            {% endif %}
+        </div>
+    </div>
+    <div class="row justify-content-center mt-5">
+        <div class="col-md-10">
+        {% if mycodes %}
+            <div class="list-group">
+                {% for mycode in mycodes %}
+                    <a href="{% url 'viewmycode' mycode.id %}" class="list-group-item list-group-item-action{% if mycode.important %} list-group-item-danger{% endif %}"><b>{{ mycode.title }}</b>{% if mycode.memo %} - {{ mycode.memo|truncatechars:30 }}{% endif %}</a>
+                {% endfor %}
+            </div>
+        {% else %}
+            <div class="text-center">
+                <h2>Looks like you don't have any mycodes! Nice work.</h2>
+            <br>
+            <a role="button" class="btn btn-primary" href="{% url 'createmycode' %}">New MyCode</a>
+            </div>
+        {% endif %}
+        </div>
+    </div>
+{% endblock %}
